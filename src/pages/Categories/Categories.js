@@ -1,9 +1,33 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, FlatList, ActivityIndicator} from 'react-native';
 import styles from './Categories.styles';
+import Config from 'react-native-config';
+import useFetch from '../../hooks/useFetch';
+import CategoryCard from '../../components/CategoryCard';
 
-const Categories = () => {
-  return <View style={styles.container}></View>;
+const Categories = ({navigation}) => {
+  const {data, loading, error} = useFetch(Config.API_CATEGORIES_URL);
+
+  const renderCategories = ({item}) => (
+    <CategoryCard category={item}></CategoryCard>
+  );
+
+  if (loading) {
+    return <ActivityIndicator size="large"></ActivityIndicator>;
+  }
+  if (error) {
+    return <Text>Hata Oluştu.</Text>;
+  }
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={data.categories}
+        renderItem={renderCategories}
+        keyExtractor={item => item.idCategory}
+      />
+    </View>
+  );
 };
 
 export default Categories;
