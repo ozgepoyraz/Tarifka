@@ -10,9 +10,12 @@ import React from 'react';
 const MealCard = ({meal, onSelect}) => {
   return (
     <TouchableWithoutFeedback onPress={onSelect}>
-      <View style={styles.container}>
-        <ImageBackground style={styles.image} source={{uri: meal.strMealThumb}}>
-          <View>
+      <View>
+        <ImageBackground
+          style={styles.container}
+          imageStyle= {{borderRadius: 10}}
+          source={{uri: meal.strMealThumb}}>
+          <View style={styles.titleBackground}>
             <Text style={styles.title}>{meal.strMeal}</Text>
           </View>
         </ImageBackground>
