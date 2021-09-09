@@ -1,8 +1,8 @@
 import React from 'react';
-import {FlatList} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Categories from './pages/Categories';
+import Meals from './pages/Meals';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,11 +13,14 @@ const Routes = () => {
         <Stack.Screen
           name="Categories"
           component={Categories}
-          options={{headerTitleAlign: 'center', headerTintColor: '#ffa500'}}
+          options={styleScreen}
         />
+        <Stack.Screen name="Meals" component={Meals} options={styleScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
+
+const styleScreen = {headerTitleAlign: 'center', headerTintColor: '#ffa500'};
 
 export default Routes;

@@ -8,8 +8,13 @@ import CategoryCard from '../../components/CategoryCard';
 const Categories = ({navigation}) => {
   const {data, loading, error} = useFetch(Config.API_CATEGORIES_URL);
 
+  const handleSelectedCategory = strCategory => {
+    navigation.navigate('Meals', {strCategory});
+  };
   const renderCategories = ({item}) => (
-    <CategoryCard category={item}></CategoryCard>
+    <CategoryCard
+      category={item}
+      onSelect={() => handleSelectedCategory(item.strCategory)}></CategoryCard>
   );
 
   if (loading) {

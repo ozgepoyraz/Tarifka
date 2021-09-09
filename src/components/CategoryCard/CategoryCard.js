@@ -1,13 +1,15 @@
-import {Text, View, Image} from 'react-native';
+import {Text, View, Image, TouchableWithoutFeedback} from 'react-native';
 import styles from './CategoryCard.styles';
 import React from 'react';
 
-const CategoryCard = ({category}) => {
+const CategoryCard = ({category, onSelect}) => {
   return (
-    <View style= {styles.container}>
-      <Image style= {styles.image} source={{uri: category.strCategoryThumb}} />
-      <Text style= {styles.title}>{category.strCategory}</Text>
-    </View>
+    <TouchableWithoutFeedback onPress={onSelect}>
+      <View style={styles.container}>
+        <Image style={styles.image} source={{uri: category.strCategoryThumb}} />
+        <Text style={styles.title}>{category.strCategory}</Text>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 export default CategoryCard;
