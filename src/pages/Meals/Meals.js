@@ -10,8 +10,8 @@ const Meals = ({route, navigation}) => {
   const {strCategory} = route.params;
   const {data, loading, error} = useFetch(Config.API_MEALS_URL + strCategory);
 
-  const handleSelectedMeal = id => {
-    console.log(id)
+  const handleSelectedMeal = idMeal => {
+    navigation.navigate('Details', {idMeal});
   };
 
   const renderMeals = ({item}) => (
@@ -20,12 +20,12 @@ const Meals = ({route, navigation}) => {
       onSelect={() => handleSelectedMeal(item.idMeal)}></MealCard>
   );
 
-  if(loading){
-    return <ActivityIndicator size= 'large'></ActivityIndicator>
+  if (loading) {
+    return <ActivityIndicator size="large"></ActivityIndicator>;
   }
 
-  if(error){
-    return <Text>HATA OLUŞTU.</Text>
+  if (error) {
+    return <Text>HATA OLUŞTU.</Text>;
   }
   return (
     <View style={styles.container}>

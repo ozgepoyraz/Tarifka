@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Categories from './pages/Categories';
 import Meals from './pages/Meals';
+import Details from './pages/Details'
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,11 @@ const Routes = () => {
           options={styleScreen}
         />
         <Stack.Screen name="Meals" component={Meals} options={styleScreen} />
+        <Stack.Screen
+          name="Details"
+          component={Details}
+          options={styleScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
