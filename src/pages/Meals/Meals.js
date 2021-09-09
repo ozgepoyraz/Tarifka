@@ -2,9 +2,11 @@ import React from 'react';
 import {ActivityIndicator, View} from 'react-native';
 import Config from 'react-native-config';
 import {FlatList} from 'react-native-gesture-handler';
+import Loading from '../../components/Loading';
 import MealCard from '../../components/MealCard';
 import useFetch from '../../hooks/useFetch';
 import styles from './Meals.styles';
+import Error from '../../components/Error';
 
 const Meals = ({route, navigation}) => {
   const {strCategory} = route.params;
@@ -21,11 +23,11 @@ const Meals = ({route, navigation}) => {
   );
 
   if (loading) {
-    return <ActivityIndicator size="large"></ActivityIndicator>;
+    return <Loading />;
   }
 
   if (error) {
-    return <Text>HATA OLUŞTU.</Text>;
+    return <Error />;
   }
   return (
     <View style={styles.container}>

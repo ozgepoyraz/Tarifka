@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Config from 'react-native-config';
-
+import Error from '../../components/Error';
+import Loading from '../../components/Loading';
 import useFetch from '../../hooks/useFetch';
 import styles from './Details.styles';
 
@@ -39,6 +40,14 @@ const Details = ({route}) => {
       </TouchableOpacity>
     </View>
   );
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <Error />;
+  }
 
   return (
     <View style={styles.container}>

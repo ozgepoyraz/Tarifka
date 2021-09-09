@@ -4,6 +4,8 @@ import styles from './Categories.styles';
 import Config from 'react-native-config';
 import useFetch from '../../hooks/useFetch';
 import CategoryCard from '../../components/CategoryCard';
+import Loading from '../../components/Loading';
+import Error from '../../components/Error';
 
 const Categories = ({navigation}) => {
   const {data, loading, error} = useFetch(Config.API_CATEGORIES_URL);
@@ -18,10 +20,10 @@ const Categories = ({navigation}) => {
   );
 
   if (loading) {
-    return <ActivityIndicator size="large"></ActivityIndicator>;
+    return <Loading />;
   }
   if (error) {
-    return <Text>Hata Oluştu.</Text>;
+    return <Error />;
   }
 
   return (
